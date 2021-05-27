@@ -4,8 +4,6 @@
     "paths": {
       "@/components": ["src/components"],
       "@/components/*": ["src/components/*"],
-      "@/adapters": ["src/adapters/fauna/index"],
-      "@/adapters/*": ["src/adapters/fauna/*"],
       "@/constants": ["src/constants/index"],
       "@/constants/*": ["src/constants/*"],
       "@/styles": ["src/styles/index"],
@@ -27,11 +25,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/adapters/fauna/index.js"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
