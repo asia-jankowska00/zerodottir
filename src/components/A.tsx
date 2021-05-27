@@ -15,7 +15,7 @@ export function A(
   }
 
   return (
-    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+    <a target='_blank' rel='noopener noreferrer' href={href} {...rest}>
       {children}
     </a>
   )

@@ -12,20 +12,20 @@ class MyDocument extends Document {
   // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility, @typescript-eslint/explicit-module-boundary-types
   render() {
     return (
-      <Html lang="en">
+      <Html lang='en'>
         <Head>
           <link
-            rel="preload"
-            href="/fonts/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
+            rel='preload'
+            href='/fonts/inter-var-latin.woff2'
+            as='font'
+            type='font/woff2'
+            crossOrigin='anonymous'
           />
           <script
             async
             defer
             data-domain={process.env.URL}
-            src="https://plausible.io/js/plausible.js"
+            src='https://plausible.io/js/plausible.js'
           />
         </Head>
         <body>

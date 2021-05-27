@@ -1,6 +1,6 @@
 import { SEO } from '@/constants/seo-constants'
 import ProgressBar from '@badrap/bar-of-progress'
-import { Provider } from 'next-auth/client'
+import { Grommet } from 'grommet'
 import { DefaultSeo } from 'next-seo'
 import Router from 'next/router'
 import { Fragment } from 'react'
@@ -9,7 +9,6 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import type { AppProps } from 'next/app'
 import type { ReactNode } from 'react'
-import 'tailwindcss/tailwind.css'
 import '@/styles/globals.css'
 
 const progress = new ProgressBar({
@@ -38,6 +37,16 @@ const {
 } = SEO
 
 const queryClient = new QueryClient()
+
+const theme = {
+  global: {
+    font: {
+      family: 'Roboto',
+      size: '14px',
+      height: '20px',
+    },
+  },
+}
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname
@@ -84,12 +93,12 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         ]}
       />
       <QueryClientProvider client={queryClient}>
-        <Provider session={pageProps.session}>
+        <Grommet theme={theme}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
           <ReactQueryDevtools initialIsOpen={false} />
-        </Provider>
+        </Grommet>
       </QueryClientProvider>
     </>
   )
