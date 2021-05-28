@@ -1,6 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-
 import type { DocumentContext } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-member-accessibility
@@ -14,12 +13,10 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
-            rel='preload'
-            href='/fonts/inter-var-latin.woff2'
-            as='font'
-            type='font/woff2'
-            crossOrigin='anonymous'
+            href='https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap'
+            rel='stylesheet'
           />
           <script
             async

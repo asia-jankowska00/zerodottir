@@ -32,6 +32,7 @@ module.exports = {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/display-name': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'simple-import-sort/imports': 'error',
@@ -44,5 +45,6 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    '@typescript-eslint/no-empty-interface': 'off',
   },
 }

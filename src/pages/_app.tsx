@@ -1,15 +1,17 @@
-import { SEO } from '@/constants/seo-constants'
 import ProgressBar from '@badrap/bar-of-progress'
 import { Grommet } from 'grommet'
-import { DefaultSeo } from 'next-seo'
+import type { AppProps } from 'next/app'
 import Router from 'next/router'
+import { DefaultSeo } from 'next-seo'
+import type { ReactNode } from 'react'
 import { Fragment } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { Normalize } from 'styled-normalize'
 
-import type { AppProps } from 'next/app'
-import type { ReactNode } from 'react'
-import '@/styles/globals.css'
+import { SEO } from '@/constants/seo-constants'
+
+import { grommetTheme } from '../styles/grommetTheme'
 
 const progress = new ProgressBar({
   size: 2,
@@ -37,16 +39,6 @@ const {
 } = SEO
 
 const queryClient = new QueryClient()
-
-const theme = {
-  global: {
-    font: {
-      family: 'Roboto',
-      size: '14px',
-      height: '20px',
-    },
-  },
-}
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname
@@ -93,7 +85,8 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         ]}
       />
       <QueryClientProvider client={queryClient}>
-        <Grommet theme={theme}>
+        <Normalize />
+        <Grommet theme={grommetTheme}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
