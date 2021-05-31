@@ -35,6 +35,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'jsx-a11y/anchor-is-valid': [

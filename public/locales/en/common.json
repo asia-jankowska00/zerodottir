@@ -1,10 +1,43 @@
 {
-  "basket": "Basket",
-  "blog": "Blog",
-  "contact": "Contact",
-  "how-it-works": "How it works",
-  "shop": "Shop",
-  "sign-up": "Sign up",
-  "what-we-do": "What we do",
-  "who-we-are": "Who we are"
+  "navigation": {
+    "blog": "Blog",
+    "cart": "Cart",
+    "contact": "Contact us",
+    "createAccount": "Create account",
+    "customerService": "Customer service",
+    "home": "Home",
+    "howItWorks": "How it works",
+    "login": "Log in",
+    "myAccount": "My account",
+    "saved": "Saved",
+    "shop": "Shop",
+    "whatWeDo": "What we do",
+    "whoWeAre": "Who we are"
+  },
+  "navbar": {
+    "deliveryCheck": "Do we deliver to you?",
+    "navHeadline": "Aalborg's first online zero waste store",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "shop": "Shop",
+    "zerodottir": "Zerodottir",
+    "customerService": "Customer service",
+    "contactUs": "Contact us"
+  },
+  "contact": {
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address"
+  },
+  "customerService": {
+    "contact": "Contact us",
+    "delivery": "Delivery",
+    "payments": "Payments",
+    "products": "Products",
+    "returns": "Returns",
+    "privacyPolicy": "Privacy policy",
+    "termsOfSale": "Terms of sale"
+  }
 }

@@ -1,22 +1,22 @@
 import ProgressBar from '@badrap/bar-of-progress'
-import { Grommet } from 'grommet'
+import { Box, Grommet, Spinner } from 'grommet'
 import type { AppProps } from 'next/app'
 import Router from 'next/router'
+import { appWithTranslation } from 'next-i18next'
 import { DefaultSeo } from 'next-seo'
-import type { ReactNode } from 'react'
-import { Fragment } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+// import { ReactQueryDevtools } from 'react-query/devtools'
 import { Normalize } from 'styled-normalize'
 
+import { Layout as DefaultLayout } from '@/components'
 import { SEO } from '@/constants/seo-constants'
 
 import { grommetTheme } from '../styles/grommetTheme'
 
 const progress = new ProgressBar({
-  size: 2,
-  color: '#22D3EE',
-  className: 'bar-of-progress',
+  size: 6,
+  color: '#8AA53F',
   delay: 100,
 })
 
@@ -50,7 +50,14 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
           Layout: (props: { children: ReactNode } & unknown) => JSX.Element
         }
       }
-    ).layoutProps?.Layout || Fragment
+    ).layoutProps?.Layout || DefaultLayout
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
   return (
     <>
       <DefaultSeo
@@ -86,15 +93,21 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       />
       <QueryClientProvider client={queryClient}>
         <Normalize />
-        <Grommet theme={grommetTheme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-          <ReactQueryDevtools initialIsOpen={false} />
+        <Grommet full theme={grommetTheme}>
+          {isLoading ? (
+            <Box align='center' justify='center' fill>
+              <Spinner message='Loading the site' size='large' />
+            </Box>
+          ) : (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </Grommet>
       </QueryClientProvider>
     </>
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)
