@@ -11,11 +11,13 @@ import {
   Text,
 } from 'grommet'
 import { Favorite } from 'grommet-icons'
+import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 interface Product {
+  id: string
   name: string
   price: number
   options: any[]
@@ -56,6 +58,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
   const [favorite, setFavorite] = useState(false)
   const size = useContext(ResponsiveContext)
   const { t } = useTranslation('common')
+  const router = useRouter()
+
+  const onClickCard = () => {
+    router.push('/shop/' + productData.id)
+  }
 
   return (
     <Box
@@ -76,6 +83,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
         elevation='none'
         fill='horizontal'
         background='light-2'
+        onClick={onClickCard}
       >
         <StyledImageWrapper fill='horizontal'>
           <StyledImage src={productData.images[0].file.url} />

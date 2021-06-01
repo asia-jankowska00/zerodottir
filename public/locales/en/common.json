@@ -50,5 +50,10 @@
     "priceAsc": "Price ascending",
     "priceDesc": "Price descending",
     "name": "Name"
+  },
+  "product": {
+    "description": "Description",
+    "ingredients": "Ingredients",
+    "origin": "Origin"
   }
 }
