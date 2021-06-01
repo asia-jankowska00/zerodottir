@@ -18,6 +18,8 @@ export const grommetTheme = deepMerge({
       'dark-1': '#333333',
       'dark-2': '#5A5857',
       focus: 'accent-1',
+      white: 'light-1',
+      border: 'rgba(0, 0, 0, 0.2)',
     },
     edgeSize: {
       pageMargin: '10%',
@@ -34,5 +36,43 @@ export const grommetTheme = deepMerge({
     border: {
       radius: '4px',
     },
+    color: 'light-2',
+    default: {
+      color: 'light-2',
+      font: {
+        weight: 700,
+      },
+    },
+    size: {
+      small: {
+        border: {
+          radius: '4px',
+        },
+      },
+      medium: {
+        border: {
+          radius: '4px',
+        },
+      },
+      large: {
+        border: {
+          radius: '4px',
+        },
+      },
+    },
+    primary: {
+      background: 'brand',
+      color: 'light-2',
+      font: {
+        weight: 700,
+      },
+    },
   },
+  // card: {
+  //   container: {
+  //     border: {
+  //       radius: 0,
+  //     },
+  //   },
+  // },
 })

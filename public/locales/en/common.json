@@ -39,5 +39,16 @@
     "returns": "Returns",
     "privacyPolicy": "Privacy policy",
     "termsOfSale": "Terms of sale"
+  },
+  "shop": {
+    "search": "Search",
+    "searchIn": "Search in",
+    "sortBy": "Sort by",
+    "addToCart": "Add to cart",
+    "categories": "Categories",
+    "all": "All",
+    "priceAsc": "Price ascending",
+    "priceDesc": "Price descending",
+    "name": "Name"
   }
 }

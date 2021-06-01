@@ -83,6 +83,7 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
                 zIndex: 22,
               },
             }}
+            color='neutral-3'
             label={router.locale}
             items={[{ label: '🇬🇧 English' }, { label: '🇩🇰 Dansk' }]}
           />
@@ -268,6 +269,7 @@ const MobileNavbar = () => {
                 <Box gap='medium'>
                   <Anchor color='neutral-3' label={t('navbar.deliveryCheck')} />
                   <StyledMenu
+                    color='neutral-3'
                     dropProps={{
                       // @ts-ignore
                       style: {

@@ -16,6 +16,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = () => {
       direction='row'
       gap='small'
       pad={{ vertical: 'small', horizontal: 'pageMargin' }}
+      background='light-3'
     >
       <Link href={Routes.home.path}>
         <Anchor color='neutral-3'>{t('navigation.home')}</Anchor>

@@ -8,6 +8,8 @@ import { ReactNode, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 // import { ReactQueryDevtools } from 'react-query/devtools'
 import { Normalize } from 'styled-normalize'
+//@ts-ignore
+import swell from 'swell-js'
 
 import { Layout as DefaultLayout } from '@/components'
 import { SEO } from '@/constants/seo-constants'
@@ -39,6 +41,16 @@ const {
 } = SEO
 
 const queryClient = new QueryClient()
+
+const options = {
+  useCamelCase: true,
+}
+
+swell.init(
+  process.env.NEXT_PUBLIC_SWELL_STORE_ID,
+  process.env.NEXT_PUBLIC_SWELL_PUBLIC_KEY,
+  options
+)
 
 function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const canonicalPath = router.pathname === '/' ? '' : router.pathname

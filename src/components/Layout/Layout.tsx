@@ -15,6 +15,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     <Box>
       <Navbar />
       <Box
+        background='light-3'
         pad={
           size == 'small'
             ? { top: '70px' }
