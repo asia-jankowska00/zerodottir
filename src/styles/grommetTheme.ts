@@ -36,9 +36,9 @@ export const grommetTheme = deepMerge({
     border: {
       radius: '4px',
     },
-    color: 'light-2',
+    // color: 'light-2',
     default: {
-      color: 'light-2',
+      // color: 'light-2',
       font: {
         weight: 700,
       },

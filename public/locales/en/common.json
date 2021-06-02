@@ -55,5 +55,56 @@
     "description": "Description",
     "ingredients": "Ingredients",
     "origin": "Origin"
+  },
+  "blog": {
+    "readMore": "Read more"
+  },
+  "home": {
+    "section1": {
+      "heading": "Aalborg’s first online zero waste store",
+      "paragraph": "The best local products, delivered to your door",
+      "button": "Browse products"
+    },
+    "section2": {
+      "heading": "The zero-waste store you can adjust to your needs",
+      "step1": "1. Add products to your cart",
+      "step2": "2. Choose delivery type - delivery of self-pickup",
+      "step3": "3. Choose how often you want to receive the items",
+      "step4": "4. Get fresh homemade products delivered in reusable containers",
+      "step5": "5. Exchange empty containers for filled ones on the next delivery",
+      "button": "Read more about our process"
+    },
+    "section3": {
+      "heading": "Homemade food and homegrown produce in a convenient subscription",
+      "paragraph1": "We bring all the benefits of farmers’ market shopping to you in a new, convenient form: order fresh produce and dried goods and have them delivered in reusable containers on a regular basis.",
+      "button1": "Find out about our methods and values",
+      "paragraph2": "All our homemade products are made with ingredients sourced from farmers in the Aalborg area. We take great care to ensure your food is organic, free from pesticides and grown with love and care.",
+      "button2": "Browse our specialties"
+    },
+    "section4": {
+      "heading": "The team with a passion",
+      "paragraph": "Zerodottir is the next step on our mission to spread our love for homemade, natural and organic plant-based food and products.",
+      "button": "Read our story"
+    },
+    "section5": {
+      "heading": "Zerodottir blog",
+      "paragraph": "Visit our blog for helpful tips, inspiration and news!",
+      "button": "Read our blog"
+    },
+    "section6": {
+      "heading": "Meet us at Vegandottir",
+      "paragraph1": "Still not convinced? Visit our cozy food truck Vegandottir at Rat & Godt and have a try of our assortment of homemade plant-based food!",
+      "button1": "See our menu",
+      "paragraph2": "Or, if you already tried our food, browse our specialties you already know and love.",
+      "button2": "Browse our specialties"
+    },
+    "section7": {
+      "heading": "Got questions?",
+      "paragraph": "If you think we still haven’t answered your questions, or you think we could collaborate and make something great together - get in touch!",
+      "button": "Contact us"
+    },
+    "section8": {
+      "heading": "Our partners"
+    }
   }
 }

@@ -1,3 +1,4 @@
+export * from './BlogCard'
 export * from './Breadcrumbs'
 export * from './Footer'
 export * from './Layout'
