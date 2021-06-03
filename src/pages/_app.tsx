@@ -25,7 +25,6 @@ const progress = new ProgressBar({
 Router.events.on('routeChangeStart', progress.start)
 Router.events.on('routeChangeComplete', () => {
   progress.finish()
-  window.scrollTo(0, 0)
 })
 Router.events.on('routeChangeError', progress.finish)
 
@@ -105,7 +104,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
       />
       <QueryClientProvider client={queryClient}>
         <Normalize />
-        <Grommet full theme={grommetTheme}>
+        <Grommet theme={grommetTheme}>
           {isLoading ? (
             <Box align='center' justify='center' fill>
               <Spinner message='Loading the site' size='large' />
