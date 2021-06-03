@@ -29,9 +29,9 @@ interface NavbarProps {}
 
 const BottomMenuItems = [
   Routes.shop,
+  Routes.howItWorks,
   Routes.whatWeDo,
   Routes.whoWeAre,
-  Routes.howItWorks,
   Routes.blog,
   Routes.contact,
 ]

@@ -18,7 +18,7 @@ import { useContext } from 'react'
 import { Routes } from 'src/routes'
 
 // import styled from 'styled-components'
-import { BlogCard } from '@/components'
+import { BlogCard, ContactStrip } from '@/components'
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
   props: {
@@ -321,19 +321,7 @@ export default function Home(): JSX.Element {
           </Box>
         </Box>
 
-        <Box
-          pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}
-          background='neutral-2'
-          align='center'
-        >
-          <Heading level='2' size='large'>
-            {t('home.section7.heading')}
-          </Heading>
-          <Paragraph color='light-2'>{t('home.section7.paragraph')}</Paragraph>
-          <Link href={Routes.contact.path}>
-            <Button primary size='large' label={t('home.section7.button')} />
-          </Link>
-        </Box>
+        <ContactStrip />
 
         <Box
           pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}

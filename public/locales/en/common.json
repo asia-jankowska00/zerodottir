@@ -106,5 +106,98 @@
     "section8": {
       "heading": "Our partners"
     }
+  },
+  "howItWorks": {
+    "section0": {
+      "heading": "The zero-waste store you can adjust to your needs",
+      "paragraph1": "We operate on a subscription basis – this helps us manage our supplies as efficiently as possible, avoiding food waste and overproduction.",
+      "paragraph2": "For you, this means you get your favorite items delivered without having to remember to restock – just tell us how often you need to restock and we’ll take care of the rest!"
+    },
+    "section1": {
+      "heading": "1. Add products to your cart",
+      "paragraph": "Select products in our web shop and add them to your cart – we offer a range of plant-based products and condiments, as well as dry goods and fresh produce.",
+      "button": "Browse products"
+    },
+    "section2": {
+      "heading": "2. Choose delivery type - delivery of self-pickup",
+      "paragraph": "On top of self-pick up we also offer standard to-door delivery. Since we rely on our own delivery network, your order will be delivered straight to your door – with no need to stop at sorting centers or post offices.3",
+      "button": "Read about delivery"
+    },
+    "section3": {
+      "heading": "3. Choose how often you want to receive the items",
+      "paragraph": "In your subscription cart overview, you can choose how often you would like to restock on every individual item. Perhaps a kilogram of beans once a month is the ideal amount, but you would like to enjoy our homemade pesto more regularly!",
+      "button": "Read about available renewal times"
+    },
+    "section4": {
+      "heading": "4. Get fresh homemade products delivered in reusable containers",
+      "paragraph": "We repurpose jars from our food trailer to deliver our products to you. This is a unique feature of our store – we try our best to minimize the waste produced as much as possible.",
+      "button": "Read about our delivery process"
+    },
+    "section5": {
+      "heading": "5. Exchange empty containers for filled ones on the next delivery",
+      "paragraph": "We operate on a milkman model – putting the same containers in circulation to minimize waste and make our service more predictable. On delivery day, you take the filled containers and we take the empty ones – this way no waste is created in the process.",
+      "button": "Read about our container refill process"
+    },
+    "section6": {
+      "heading": "6. Manage your subscription in your account",
+      "paragraph1": "All your subscription details are saved in your account – login to edit your subscription cart, personal information, address and payment details.",
+      "paragraph2": "Our services are completely non-binding, meaning you can cancel your subscription at any time. If you do so, we would appreciate it if you shared with us what was the reason for your cancelling. ",
+      "button": "Go to account overview"
+    }
+  },
+  "whatWeDo": {
+    "section0": {
+      "heading": "Homemade food and homegrown produce in a convenient subscription",
+      "paragraph1": "Zerodottir is our unique sustainable online shopping concept – based on regular scheduled deliveries, and the belief that shopping online can be made sustainable. ",
+      "paragraph2": "By establishing a continuous collaboration with our customers, we can bring the best of both worlds to them: the sustainability of buying at farmers’ markets, and the convenience of online shopping."
+    },
+    "section1": {
+      "heading": "Convenience and sustainability",
+      "paragraph1": "Living a zero-waste lifestyle is hard, and it can be a struggle to find the right place to start. We get that – so we want to make it easier for you, by helping you take small steps towards bigger goals. ",
+      "paragraph2": "We crafted our service with ease and convenience in mind – simply select products and let us know when you want them delivered."
+    },
+    "section2": {
+      "heading": "Support the local community",
+      "paragraph1": "Zerodottir was founded with the goal of supporting local producers in mind. We have already been collaborating with producers for our eatery, but now we are expanding and looking for new opportunities.",
+      "paragraph2": "We aim to create a network of suppliers from the Aalborg area, and only outsource things that cannot be grown locally (such as nuts or spices)."
+    },
+    "section3": {
+      "heading1": "Homegrown produce",
+      "heading2": "Homemade food",
+      "paragraph1": "We bring all the benefits of farmers’ market shopping to you in a new, convenient form: order fresh produce and dried goods and have them delivered in reusable containers on a regular basis.",
+      "paragraph2": "All our homemade products are produced from ingredients sourced from farmers in the Aalborg area. We take great care to ensure your food is organic, free from pesticides and grown with love and care.",
+      "button1": "Browse fresh produce",
+      "button2": "Browse our specialties"
+    }
+  },
+  "whoWeAre": {
+    "section0": {
+      "heading": "The team with a passion",
+      "paragraph1": "We are currently 3 people, in high spirits and on a great mission. We all come from an international background (Iceland and Estonia), and we all share an optimistic attitude and a desire to make something great every day.",
+      "paragraph2": "Our mission is to unite with all those who share our vision, by creating a warm and wholesome community where everyone can buy the best of local produce and this way connect more closely with local producers."
+    },
+    "section1": {
+      "heading": "How it all started",
+      "paragraph1": "Vegan food and sustainable lifestyle has always been a passion for all three of us – so we decided to team up and make something great.",
+      "paragraph2": "We have been inspired by going on trips and exploring zero-waste shops, which has made us want to build our own store. Our goal from the beginning was providing great homemade and local food, all in a cozy, friendly atmosphere."
+    },
+    "section2": {
+      "heading": "First steps – the food trailer",
+      "paragraph1": "Vegandottir was the first stop on our journey to building the full concept. There, you can enjoy our fresh vegan burgers, made wholly from local and organic ingredients.",
+      "paragraph2": "Along the way we realized that some of the products that we use in the food trailer inevitably creates waste in the form of containers that we get the food in. We came up with the idea to repurpose those containers as a way to sustainably distribute our homemade foodstuffs.",
+      "button": "See our menu"
+    },
+    "section3": {
+      "heading": "Taking it up a notch – Zerodottir",
+      "paragraph1": "We started Zerodottir as a way to complete our original idea of an eatery and shop under one roof – ultimately we want to change our location to achieve this vision fully.",
+      "paragraph2": "We’re working hard to expand our range of products and supply you with the best possible experience shopping at Zerodottir. All of the food here is what you already know and love at Vegandottir.",
+      "button": "Browse products"
+    },
+    "section4": {
+      "heading": "Our passion for vegan food",
+      "paragraph1": "We have accumulated a lot of insight and inspiration to share across the years.",
+      "paragraph2": "Visit our blog for helpful tips, inspiration and news!",
+      "button": "Read our blog"
+    }
   }
 }
