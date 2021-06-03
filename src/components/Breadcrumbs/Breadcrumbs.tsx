@@ -23,11 +23,13 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = () => {
       </Link>
 
       <Text>&gt;</Text>
-      <Link href={Routes[camelCase(router.route.split('/')[1])].path}>
-        <Anchor color='neutral-3'>
-          {t(`navigation.${camelCase(router.route.split('/')[1])}`)}
-        </Anchor>
-      </Link>
+      {Routes[camelCase(router.route.split('/')[1])] && (
+        <Link href={Routes[camelCase(router.route.split('/')[1])].path}>
+          <Anchor color='neutral-3'>
+            {t(`navigation.${camelCase(router.route.split('/')[1])}`)}
+          </Anchor>
+        </Link>
+      )}
     </Box>
   )
 }
