@@ -27,11 +27,11 @@ import {
   useState,
 } from 'react'
 import { useQuery } from 'react-query'
-import { Routes } from 'src/routes'
 import styled from 'styled-components'
 import swell from 'swell-js'
 
 import { ProductCard } from '@/components'
+import { Routes } from '@/routes'
 
 interface ShopProps {}
 

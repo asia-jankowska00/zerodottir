@@ -28,9 +28,10 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useCallback, useContext, useState } from 'react'
 import { useQuery } from 'react-query'
-import { Routes } from 'src/routes'
 import styled from 'styled-components'
 import swell from 'swell-js'
+
+import { Routes } from '@/routes'
 
 interface NavbarProps {}
 

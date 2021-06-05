@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import { useContext } from 'react'
 import styled from 'styled-components'
 
-import { Routes } from '../../routes'
+import { Routes } from '@/routes'
 
 interface FooterProps {}
 

@@ -13,9 +13,9 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useContext } from 'react'
-import { Routes } from 'src/routes'
 
 import { ContactStrip, Section } from '@/components'
+import { Routes } from '@/routes'
 
 interface WhatWeDoProps {}
 

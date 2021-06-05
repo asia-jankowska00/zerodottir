@@ -1,9 +1,9 @@
 import { Box, ResponsiveContext } from 'grommet'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
-import { Routes } from 'src/routes'
 
 import { Breadcrumbs, Footer, Navbar } from '@/components'
+import { Routes } from '@/routes'
 
 interface LayoutProps {}
 

@@ -4,9 +4,9 @@ import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Routes } from 'src/routes'
 
 import { BlogCard, ContactStrip, Section } from '@/components'
+import { Routes } from '@/routes'
 
 interface WhoWeAreProps {}
 

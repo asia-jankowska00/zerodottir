@@ -15,10 +15,10 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { NextSeo } from 'next-seo'
 import { useContext } from 'react'
-import { Routes } from 'src/routes'
 
 // import styled from 'styled-components'
 import { BlogCard, ContactStrip } from '@/components'
+import { Routes } from '@/routes'
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => ({
   props: {

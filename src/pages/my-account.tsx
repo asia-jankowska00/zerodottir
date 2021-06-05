@@ -17,9 +17,10 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { Routes } from 'src/routes'
 import styled from 'styled-components'
 import swell from 'swell-js'
+
+import { Routes } from '@/routes'
 
 interface MyAccountProps {}
 

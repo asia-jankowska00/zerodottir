@@ -1,7 +1,8 @@
 import { Box, Button, Heading, Paragraph } from 'grommet'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
-import { Routes } from 'src/routes'
+
+import { Routes } from '@/routes'
 
 interface ContactStripProps {}
 

@@ -14,8 +14,9 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useMutation, useQueryClient } from 'react-query'
-import { Routes } from 'src/routes'
 import swell from 'swell-js'
+
+import { Routes } from '@/routes'
 
 interface LoginProps {}
 

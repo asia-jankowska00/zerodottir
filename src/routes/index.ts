@@ -1,7 +1,7 @@
 export const Routes: Record<RouteKey, Route> = {
   blog: {
     name: 'blog',
-    path: '/blog' as string,
+    path: '/blog',
   },
   cart: {
     name: 'cart',

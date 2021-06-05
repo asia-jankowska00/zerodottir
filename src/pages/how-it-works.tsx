@@ -2,9 +2,9 @@
 import { Main } from 'grommet'
 import { GetServerSideProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { Routes } from 'src/routes'
 
 import { Section } from '@/components'
+import { Routes } from '@/routes'
 
 interface HowItWorksProps {}
 

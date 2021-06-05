@@ -3,7 +3,8 @@ import camelCase from 'lodash.camelcase'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { Routes } from 'src/routes'
+
+import { Routes } from '@/routes'
 
 interface BreadcrumbsProps {}
 
