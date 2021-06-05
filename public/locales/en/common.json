@@ -13,10 +13,14 @@
     "shop": "Shop",
     "whatWeDo": "What we do",
     "whoWeAre": "Who we are",
-    "404": "404 - Not found"
+    "404": "404 - Not found",
+    "checkout": "Checkout",
+    "payment": "Payment",
+    "confirmation": "Confirmation"
   },
   "navbar": {
     "deliveryCheck": "Do we deliver to you?",
+    "deliveryCheckTitle": "Insert your postcode to check if we deliver to you",
     "navHeadline": "Aalborg's first online zero waste store",
     "menu": "Menu",
     "close": "Close"
@@ -27,10 +31,51 @@
     "customerService": "Customer service",
     "contactUs": "Contact us"
   },
+  "account": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "address": "Address",
+    "country": "Country",
+    "denmark": "Denmark",
+    "city": "City",
+    "postcode": "Postcode",
+    "phone": "Phone",
+    "password": "Password",
+    "email": "Email",
+    "cardNumber": "Card number",
+    "expirationMonth": "Expiration month",
+    "expirationYear": "Expiration year",
+    "cvv": "cvv",
+    "mySubscriptions": "My subscriptions"
+  },
+  "blog": {
+    "readMore": "Read more"
+  },
+  "cart": {
+    "yourCart": "Your cart",
+    "name": "Name",
+    "amount": "Amount",
+    "renewal": "Renewal",
+    "delivery": "Delivery",
+    "total": "Total per renewal",
+    "remove": "Remove",
+    "activateButton": "Activate your subscription",
+    "selfPickup": "Self pick-up",
+    "cartEmpty": "Your cart is empty"
+  },
+  "confirmation": {
+    "confirmation": "Confirmation",
+    "address": "Address",
+    "submit": "Confirm and activate subscription"
+  },
   "contact": {
     "phone": "Phone",
     "email": "Email",
     "address": "Address"
+  },
+  "createAccount": {
+    "createAccount": "Create account",
+    "haveAccount": "Already have an account?"
   },
   "customerService": {
     "contact": "Contact us",
@@ -40,6 +85,10 @@
     "returns": "Returns",
     "privacyPolicy": "Privacy policy",
     "termsOfSale": "Terms of sale"
+  },
+  "login": {
+    "login": "Log in",
+    "noAccount": "No account?"
   },
   "shop": {
     "search": "Search",
@@ -52,13 +101,14 @@
     "priceDesc": "Price descending",
     "name": "Name"
   },
+  "payment": {
+    "payment": "Payment",
+    "submit": "Continue to confirmation"
+  },
   "product": {
     "description": "Description",
     "ingredients": "Ingredients",
     "origin": "Origin"
-  },
-  "blog": {
-    "readMore": "Read more"
   },
   "home": {
     "section1": {

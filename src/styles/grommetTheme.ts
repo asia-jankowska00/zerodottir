@@ -75,4 +75,41 @@ export const grommetTheme = deepMerge({
   //     },
   //   },
   // },
+  table: {
+    header: {
+      //     background?: BackgroundType;
+      //     extend?: ExtendType;
+      //     align?: string;
+      // pad: { horizontal: 'small', vertical: 'small' },
+      //     border?: string;
+      //     verticalAlign?: string;
+      //     fill?: string;
+    },
+    body: {
+      //     align?: string;
+      background: 'light-2',
+      //     border?: string;
+      //     extend?: ExtendType;
+      // pad: { horizontal: 'small', vertical: 'small' },
+    },
+    footer: {
+      //     align?: string;
+      //     background?: BackgroundType;
+      //     extend?: ExtendType;
+      //     pad?: PadType;
+      //     border?: string;
+      //     verticalAlign?: string;
+      //     fill?: string;
+    },
+    row: {
+      //     hover?: {
+      //       background?: BackgroundType;
+      //       extend?: ExtendType;
+    },
+  },
+  formField: {
+    extend: `
+    input { background: #FFFFFE };
+    `,
+  },
 })

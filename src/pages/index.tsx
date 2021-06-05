@@ -73,7 +73,7 @@ export default function Home(): JSX.Element {
         </Box>
 
         <Box
-          pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}
+          pad={{ horizontal: 'pageMargin', vertical: 'large' }}
           background='light-2'
         >
           <Heading level='2' size='large'>

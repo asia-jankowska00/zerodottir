@@ -8,7 +8,6 @@ import { ReactNode, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 // import { ReactQueryDevtools } from 'react-query/devtools'
 import { Normalize } from 'styled-normalize'
-//@ts-ignore
 import swell from 'swell-js'
 
 import { Layout as DefaultLayout } from '@/components'
@@ -106,7 +105,7 @@ function MyApp({ Component, pageProps, router }: AppProps): JSX.Element {
         <Normalize />
         <Grommet theme={grommetTheme}>
           {isLoading ? (
-            <Box align='center' justify='center' fill>
+            <Box align='center' justify='center' height='100vh'>
               <Spinner message='Loading the site' size='large' />
             </Box>
           ) : (

@@ -2,14 +2,18 @@ import {
   Anchor,
   Box,
   BoxTypes,
+  Button,
   Header,
+  Heading,
   Image,
   Layer,
   Menu,
   Nav,
   ResponsiveContext,
   Sidebar,
+  Stack,
   Text,
+  TextInput,
 } from 'grommet'
 import {
   Cart,
@@ -18,12 +22,15 @@ import {
   Menu as MenuIcon,
   UserSettings,
 } from 'grommet-icons'
+import debounce from 'lodash/debounce'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { useContext, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
+import { useQuery } from 'react-query'
 import { Routes } from 'src/routes'
 import styled from 'styled-components'
+import swell from 'swell-js'
 
 interface NavbarProps {}
 
@@ -50,6 +57,32 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
   const router = useRouter()
   const size = useContext(ResponsiveContext)
 
+  const [deliveryMessage, setDeliveryMessage] = useState('')
+  const [deliveryModal, setDeliveryModal] = useState(false)
+
+  const cartQuery = useQuery('cart', async () => await swell.cart.get(), {
+    onSuccess: (data) => console.log(data),
+  })
+
+  const accountQuery = useQuery(
+    'account',
+    async () => await swell.account.get(),
+    {
+      onSuccess: (data) => console.log(data),
+    }
+  )
+
+  const debouncedMessage = useCallback(
+    debounce(() => {
+      setDeliveryMessage('Yes, we deliver to you!')
+    }, 600),
+    []
+  )
+
+  const onDeliveryCheck = () => {
+    debouncedMessage()
+  }
+
   return (
     <StyledDesktopHeader width='100%' direction='column' gap='none'>
       <Box
@@ -62,7 +95,7 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
         width='100%'
       >
         <Box direction='row' align='center' wrap>
-          <Link href={Routes.home.path}>
+          <Link href={Routes.home.path as string}>
             <StyledImage
               src='/logo.svg'
               height='60px'
@@ -74,7 +107,53 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
         </Box>
 
         <Nav direction='row' align='center'>
-          <Anchor color='neutral-3' label={t('navbar.deliveryCheck')} />
+          <Anchor
+            color='neutral-3'
+            label={t('navbar.deliveryCheck')}
+            onClick={() => setDeliveryModal(true)}
+          />
+          {deliveryModal && (
+            <Layer
+              position='center'
+              onClickOutside={() => {
+                setDeliveryModal(false)
+                setDeliveryMessage('')
+              }}
+              onEsc={() => {
+                setDeliveryModal(false)
+                setDeliveryMessage('')
+              }}
+            >
+              <Box pad='medium' gap='small' width='medium' align='center'>
+                <Heading level={3} margin='none'>
+                  {t('navbar.deliveryCheckTitle')}
+                </Heading>
+                <TextInput onChange={onDeliveryCheck} />
+                <Box
+                  as='footer'
+                  gap='small'
+                  direction='row'
+                  align='center'
+                  justify='center'
+                  pad={{ top: 'medium', bottom: 'small' }}
+                >
+                  <Text>{deliveryMessage}</Text>
+                  <Button
+                    label={
+                      <Text color='white'>
+                        <strong>Close</strong>
+                      </Text>
+                    }
+                    onClick={() => {
+                      setDeliveryModal(false)
+                      setDeliveryMessage('')
+                    }}
+                    primary
+                  />
+                </Box>
+              </Box>
+            </Layer>
+          )}
 
           <StyledMenu
             dropProps={{
@@ -88,13 +167,15 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
             items={[{ label: '🇬🇧 English' }, { label: '🇩🇰 Dansk' }]}
           />
 
-          <Link href={Routes.saved.path}>
+          <Link href={Routes.saved.path as string}>
             <Box
               direction={size === 'medium' ? 'column' : 'row'}
               gap='xsmall'
               align='center'
             >
-              <Favorite color='neutral-3' />
+              <Stack anchor='top-right' margin='none'>
+                <Favorite color='neutral-3' />
+              </Stack>
               <Anchor
                 color='neutral-3'
                 label={t(`navigation.${Routes.saved.name}`)}
@@ -102,13 +183,18 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
             </Box>
           </Link>
 
-          <Link href={Routes.cart.path}>
+          <Link href={Routes.checkout['cart'].path}>
             <Box
               direction={size === 'medium' ? 'column' : 'row'}
               gap='xsmall'
               align='center'
             >
-              <Cart color='neutral-3' />
+              <Stack anchor='top-right' margin='none'>
+                <Cart color='neutral-3' />
+                {cartQuery.data?.items?.length && (
+                  <Box background='accent-1' pad='4px' round></Box>
+                )}
+              </Stack>
               <Anchor
                 color='neutral-3'
                 label={t(`navigation.${Routes.cart.name}`)}
@@ -116,17 +202,27 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
             </Box>
           </Link>
 
-          <Box
-            direction={size === 'medium' ? 'column' : 'row'}
-            gap='xsmall'
-            align='center'
+          <Link
+            href={
+              accountQuery.data
+                ? (Routes.myAccount.path as string)
+                : (Routes.login.path as string)
+            }
           >
-            <UserSettings color='neutral-3' />
-            <Anchor
-              color='neutral-3'
-              label={t(`navigation.${Routes.login.name}`)}
-            />
-          </Box>
+            <Box
+              direction={size === 'medium' ? 'column' : 'row'}
+              gap='xsmall'
+              align='center'
+            >
+              <Stack anchor='top-right' margin='none'>
+                <UserSettings color='neutral-3' />
+              </Stack>
+              <Anchor
+                color='neutral-3'
+                label={t(`navigation.${Routes.myAccount.name}`)}
+              />
+            </Box>
+          </Link>
         </Nav>
       </Box>
       <Box
@@ -139,7 +235,7 @@ const DesktopNavbar: React.FC<BoxTypes> = () => {
         width='100%'
       >
         {BottomMenuItems.map((item) => (
-          <Link key={item.name} href={item.path}>
+          <Link key={item.name as string} href={item.path as string}>
             <Anchor color='light-2' label={t(`navigation.${item.name}`)} />
           </Link>
         ))}
@@ -168,6 +264,18 @@ const MobileNavbar = () => {
     setMenuOpen(false)
   })
 
+  const accountQuery = useQuery(
+    'account',
+    async () => await swell.account.get(),
+    {
+      onSuccess: (data) => console.log(data),
+    }
+  )
+
+  const cartQuery = useQuery('cart', async () => await swell.cart.get(), {
+    onSuccess: (data) => console.log(data),
+  })
+
   return (
     <Header>
       <StyledMobileNav
@@ -178,21 +286,26 @@ const MobileNavbar = () => {
         justify='between'
         pad={{ vertical: 'small', horizontal: 'pageMargin' }}
       >
-        <Link href={Routes.home.path}>
+        <Link href={Routes.home.path as string}>
           <StyledImage src='/logo.svg' height='48px' alt='Zerodottir logo' />
         </Link>
 
         <Box direction='row' align='center' gap='large'>
-          <Link href={Routes.saved.path}>
+          <Link href={Routes.saved.path as string}>
             <Box align='center'>
               <Favorite color='neutral-3' />
               <Text size='xsmall'>{t(`navigation.${Routes.saved.name}`)}</Text>
             </Box>
           </Link>
 
-          <Link href={Routes.cart.path}>
+          <Link href={Routes.checkout['cart'].path}>
             <Box align='center'>
-              <Cart color='neutral-3' />
+              <Stack anchor='top-right' margin='none'>
+                <Cart color='neutral-3' />
+                {cartQuery.data?.items?.length && (
+                  <Box background='accent-1' pad='4px' round></Box>
+                )}
+              </Stack>
               <Text size='xsmall'>{t(`navigation.${Routes.cart.name}`)}</Text>
             </Box>
           </Link>
@@ -240,7 +353,7 @@ const MobileNavbar = () => {
               >
                 <Box>
                   {BottomMenuItems.map((item) => (
-                    <Link key={item.name} href={item.path}>
+                    <Link key={item.name as string} href={item.path as string}>
                       <Box pad={{ vertical: 'medium' }}>
                         <Anchor
                           color='neutral-3'
@@ -250,7 +363,13 @@ const MobileNavbar = () => {
                     </Link>
                   ))}
 
-                  <Link href={Routes.login.path}>
+                  <Link
+                    href={
+                      accountQuery.data
+                        ? (Routes.myAccount.path as string)
+                        : (Routes.login.path as string)
+                    }
+                  >
                     <Box
                       direction='row'
                       gap='xsmall'

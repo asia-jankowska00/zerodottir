@@ -1,12 +1,30 @@
 export const Routes: Record<RouteKey, Route> = {
   blog: {
     name: 'blog',
-    path: '/blog',
+    path: '/blog' as string,
   },
   cart: {
     name: 'cart',
     path: '/cart',
   },
+  checkout: {
+    cart: {
+      name: 'cart',
+      path: '/checkout/cart',
+    },
+    account: {
+      name: 'account',
+      path: '/checkout/account',
+    },
+    payment: {
+      name: 'payment',
+      path: '/checkout/payment',
+    },
+    confirmation: {
+      name: 'confirmation',
+      path: '/checkout/confirmation',
+    },
+  } as unknown as Route,
   contact: {
     name: 'contact',
     path: '/contact',
@@ -31,6 +49,10 @@ export const Routes: Record<RouteKey, Route> = {
     name: 'myAccount',
     path: '/login',
   },
+  myAccount: {
+    name: 'myAccount',
+    path: '/my-account',
+  },
   saved: {
     name: 'saved',
     path: '/saved',
@@ -54,4 +76,8 @@ export type RouteKey = string
 export type Route = {
   name: string
   path: string
+}
+
+export type NestedRoute = {
+  [key: string]: Route
 }

@@ -29,7 +29,6 @@ import {
 import { useQuery } from 'react-query'
 import { Routes } from 'src/routes'
 import styled from 'styled-components'
-//@ts-ignore
 import swell from 'swell-js'
 
 import { ProductCard } from '@/components'

@@ -5,6 +5,8 @@ import {
   Button,
   Heading,
   Image,
+  Layer,
+  Paragraph,
   ResponsiveContext,
   Select,
   Spinner,
@@ -15,10 +17,9 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useContext, useState } from 'react'
-import { useQuery } from 'react-query'
+import { useContext, useRef, useState } from 'react'
+import { useMutation, useQuery } from 'react-query'
 import styled from 'styled-components'
-//@ts-ignore
 import swell from 'swell-js'
 
 interface ProductProps {}
@@ -55,11 +56,24 @@ const StyledFavorite = styled(Favorite)`
   }
 `
 
+const StyledNotificationContainer = styled(Box)`
+  padding: 10%;
+  box-sizing: content-box;
+  min-width: unset;
+  min-height: unset;
+`
+
+const StyledLayer = styled(Layer)`
+  width: 100%;
+  box-sizing: content-box;
+`
+
 const Product: React.FC<ProductProps> = () => {
   const size = useContext(ResponsiveContext)
   const router = useRouter()
   const [favorite, setFavorite] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number[]>([1, 2])
+  const [cartNotification, setCartNotification] = useState(false)
 
   const { t } = useTranslation('common')
 
@@ -71,6 +85,37 @@ const Product: React.FC<ProductProps> = () => {
     }
   )
 
+  const addToCartMutation = useMutation(
+    async () =>
+      await swell.cart.addItem({
+        product_id: productQuery.data?.id,
+        quantity: 1,
+        options: [
+          { name: 'Plan', value: selectedPlan?.name },
+          { name: 'Weight', value: selectedWeight?.name },
+          { name: 'Delivery', value: 'delivery' },
+        ],
+      }),
+    {
+      onSuccess: (data) => console.log(data),
+    }
+  )
+
+  const weightOptions = productQuery.data?.options?.[1]?.values
+  const planOptions = productQuery.data?.options?.[0]?.values
+
+  const [selectedWeight, setSelectedWeight] = useState(weightOptions?.[0])
+  const [selectedPlan, setSelectedPlan] = useState(planOptions?.[0])
+
+  const onAddToCart = () => {
+    console.log('adding to cart')
+    addToCartMutation.mutateAsync()
+    setCartNotification(true)
+    setTimeout(() => {
+      setCartNotification(false)
+    }, 1000)
+  }
+
   // const similarProductsQuery = useQuery(
   //   ['similar', router.query.pid],
   //   async () => await swell.products.get({
@@ -81,6 +126,8 @@ const Product: React.FC<ProductProps> = () => {
   //     enabled: !!productQuery.data,
   //   }
   // )
+
+  const addToCartButtonRef = useRef(undefined)
 
   if (productQuery.isLoading)
     return (
@@ -97,7 +144,7 @@ const Product: React.FC<ProductProps> = () => {
       >
         <Box width={size === 'small' ? '100%' : '50%'}>
           <StyledImageWrapper>
-            <StyledImage src={productQuery.data?.images[0].file.url} />
+            <StyledImage src={productQuery.data?.images?.[0]?.file?.url} />
           </StyledImageWrapper>
         </Box>
 
@@ -112,36 +159,40 @@ const Product: React.FC<ProductProps> = () => {
           </Heading>
 
           <Box pad={{ vertical: 'medium' }}>
-            <Text>{productQuery.data?.price} dkk / kg</Text>
+            <Text>{productQuery.data?.price} DKK / kg</Text>
           </Box>
 
           <Box
             direction='row'
             align='end'
-            justify={
-              productQuery.data?.options && productQuery.data?.options?.[1]
-                ? 'start'
-                : 'end'
-            }
+            justify={planOptions ? 'start' : 'end'}
             fill='horizontal'
             pad={{ vertical: 'large' }}
             gap='small'
             wrap
           >
-            {productQuery.data?.options && productQuery.data?.options?.[1] && (
+            {weightOptions && (
               <StyledSelect
-                options={productQuery.data?.options?.[1].values}
-                defaultValue={productQuery.data?.options?.[1].values[0]}
+                options={weightOptions}
+                defaultValue={weightOptions[0]}
                 valueKey='id'
                 labelKey='name'
+                onChange={({ value }) => {
+                  console.log(value)
+                  setSelectedWeight(value)
+                }}
               />
             )}
 
             <StyledSelect
-              options={productQuery.data?.options?.[0].values}
-              defaultValue={productQuery.data?.options?.[0].values[0]}
+              options={planOptions}
+              defaultValue={planOptions[0]}
               valueKey='id'
               labelKey='name'
+              onChange={({ value }) => {
+                console.log(value)
+                setSelectedPlan(value)
+              }}
             />
 
             <Button
@@ -155,7 +206,30 @@ const Product: React.FC<ProductProps> = () => {
               }
               margin={{ top: 'small' }}
               label={t('shop.addToCart')}
+              onClick={onAddToCart}
+              //@ts-ignore
+              ref={addToCartButtonRef}
             />
+
+            {cartNotification && (
+              <StyledLayer
+                plain
+                style={{ top: '150%' }}
+                onEsc={() => setCartNotification(false)}
+                onClickOutside={() => setCartNotification(false)}
+                target={addToCartButtonRef.current}
+                position='top'
+                modal={false}
+              >
+                <StyledNotificationContainer
+                  fill
+                  background='brand'
+                  pad='small'
+                >
+                  <Text color='light-2'>Added to cart!</Text>
+                </StyledNotificationContainer>
+              </StyledLayer>
+            )}
 
             <Button
               icon={
@@ -179,17 +253,17 @@ const Product: React.FC<ProductProps> = () => {
           >
             <AccordionPanel label={t('product.ingredients')}>
               <Box pad='medium' background='light-2'>
-                <Text>{t('product.ingredients')}</Text>
+                <Paragraph>{productQuery.data?.content?.ingredients}</Paragraph>
               </Box>
             </AccordionPanel>
             <AccordionPanel label={t('product.description')}>
               <Box pad='medium' background='light-2'>
-                <Text>{productQuery.data?.description}</Text>
+                <Paragraph>{productQuery.data?.description}</Paragraph>
               </Box>
             </AccordionPanel>
             <AccordionPanel label={t('product.origin')}>
               <Box pad='medium' background='light-2'>
-                <Text>{t('product.origin')}</Text>
+                <Paragraph>{productQuery.data?.content?.origin}</Paragraph>
               </Box>
             </AccordionPanel>
           </Accordion>

@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "@badrap/bar-of-progress": "0.1.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@types/styled-components": "^5.1.9",
     "grommet": "^2.17.2",
     "grommet-icons": "^4.5.0",
