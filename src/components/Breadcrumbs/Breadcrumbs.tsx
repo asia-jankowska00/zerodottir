@@ -25,7 +25,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = () => {
         <Anchor color='neutral-3'>{t('navigation.home')}</Anchor>
       </Link>
 
-      {Routes[routeSegmentOne].name ? (
+      {Routes[routeSegmentOne]?.name ? (
         <>
           <Text margin={{ horizontal: 'small' }}>&gt;</Text>
 
@@ -36,21 +36,23 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = () => {
           </Link>
         </>
       ) : (
-        <>
-          <Text margin={{ horizontal: 'small' }}>&gt;</Text>
+        routeSegmentTwo && (
+          <>
+            <Text margin={{ horizontal: 'small' }}>&gt;</Text>
 
-          <Anchor color='neutral-3'>
-            {t(`navigation.${routeSegmentOne}`)}
-          </Anchor>
-
-          <Text margin={{ horizontal: 'small' }}>&gt;</Text>
-
-          <Link href={Routes[routeSegmentOne][routeSegmentTwo].path}>
             <Anchor color='neutral-3'>
-              {t(`navigation.${routeSegmentTwo}`)}
+              {t(`navigation.${routeSegmentOne}`)}
             </Anchor>
-          </Link>
-        </>
+
+            <Text margin={{ horizontal: 'small' }}>&gt;</Text>
+
+            <Link href={Routes[routeSegmentOne][routeSegmentTwo].path}>
+              <Anchor color='neutral-3'>
+                {t(`navigation.${routeSegmentTwo}`)}
+              </Anchor>
+            </Link>
+          </>
+        )
       )}
     </Box>
   )

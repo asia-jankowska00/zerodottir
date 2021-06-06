@@ -34,6 +34,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <meta name='robots' content='noindex' />
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
             href='https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap'
