@@ -23,6 +23,7 @@ interface Blog {
 
 interface BlogCardProps {
   blogData?: Partial<Blog>
+  index: number
 }
 
 const StyledImage = styled(Image)`
@@ -37,7 +38,7 @@ const StyledImageWrapper = styled(Box)`
   padding-bottom: 56.2%;
 `
 
-export const BlogCard: React.FC<BlogCardProps> = ({ blogData }) => {
+export const BlogCard: React.FC<BlogCardProps> = ({ blogData, index }) => {
   const size = useContext(ResponsiveContext)
   const { t } = useTranslation('common')
   const router = useRouter()
@@ -45,6 +46,24 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blogData }) => {
   const onClickCard = () => {
     router.push('/blog/' + blogData?.id)
   }
+
+  const variants = [
+    {
+      title: '7 ideas for repurposing everyday items',
+      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+      image: '/blog/blog1.jpg',
+    },
+    {
+      title: 'Guide to traditional food preservation methods',
+      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+      image: '/blog/blog2.jpg',
+    },
+    {
+      title: 'How farms grow pesticide free produce',
+      description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+      image: '/blog/blog3.jpg',
+    },
+  ]
 
   return (
     <Box
@@ -69,19 +88,19 @@ export const BlogCard: React.FC<BlogCardProps> = ({ blogData }) => {
       >
         <StyledImageWrapper fill='horizontal'>
           {/* <StyledImage src={blogData.images[0].file.url} /> */}
-          <StyledImage src='/home/background.jpg' />
+          <StyledImage src={variants[index].image} />
         </StyledImageWrapper>
 
         <CardBody responsive={false} pad='medium' height='medium'>
           <Box>
             <Box direction='row' align='start' justify='between'>
               <Heading margin='none' level='3'>
-                blogData?.title
+                {variants[index].title}
               </Heading>
             </Box>
 
             <Box pad={{ vertical: 'xsmall' }}>
-              <Paragraph>blogData?.summary</Paragraph>
+              <Paragraph>{variants[index].description}</Paragraph>
             </Box>
           </Box>
           <CardFooter>

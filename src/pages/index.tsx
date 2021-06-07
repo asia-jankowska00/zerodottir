@@ -272,10 +272,10 @@ export default function Home(): JSX.Element {
               as='a'
             />
           </Link>
-          <Box direction='row'>
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+          <Box direction={size === 'small' ? 'column' : 'row'}>
+            <BlogCard index={0} />
+            <BlogCard index={1} />
+            <BlogCard index={2} />
           </Box>
         </Box>
 
@@ -331,11 +331,15 @@ export default function Home(): JSX.Element {
           <Heading level='2' size='large'>
             {t('home.section8.heading')}
           </Heading>
-          {/* <StyledScrollBox direction='row'> */}
-          <Image fit='cover' height='200px' src='/home/refood-logo.png' />
-          <Image fit='cover' height='200px' src='/home/surdejs-logo.jpg' />
-          <Image fit='cover' height='200px' src='/home/microgreens-logo.png' />
-          {/* </StyledScrollBox> */}
+          <Box gap='medium' direction={size === 'small' ? 'column' : 'row'}>
+            <Image fit='cover' height='200px' src='/home/refood-logo.png' />
+            <Image fit='cover' height='200px' src='/home/surdejs-logo.jpg' />
+            <Image
+              fit='cover'
+              height='200px'
+              src='/home/microgreens-logo.png'
+            />
+          </Box>
         </Box>
 
         <Image fit='cover' height='200px' src='/home/banner.jpg' />

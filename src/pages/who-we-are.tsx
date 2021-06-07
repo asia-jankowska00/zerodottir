@@ -93,10 +93,10 @@ const WhoWeAre: React.FC<WhoWeAreProps> = () => {
               as='a'
             />
           </Link>
-          <Box direction='row'>
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+          <Box direction={size === 'small' ? 'column' : 'row'}>
+            <BlogCard index={0} />
+            <BlogCard index={1} />
+            <BlogCard index={2} />
           </Box>
         </Box>
         <ContactStrip />
