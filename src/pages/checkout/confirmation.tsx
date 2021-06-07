@@ -17,6 +17,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { NextSeo } from 'next-seo'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { Routes } from 'src/routes'
 import styled from 'styled-components'
@@ -64,89 +65,92 @@ const Confirmation: React.FC<ConfirmationProps> = () => {
   }
 
   return (
-    <Main pad={{ horizontal: 'pageMargin', bottom: 'xlarge' }}>
-      <Heading level='2'>{t('confirmation.confirmation')}</Heading>
+    <>
+      <NextSeo title={t('navigation.confirmation')} />
+      <Main pad={{ horizontal: 'pageMargin', bottom: 'xlarge' }}>
+        <Heading level='2'>{t('confirmation.confirmation')}</Heading>
 
-      {cartQuery.isLoading && (
-        <Box pad='xlarge' align='center'>
-          <Spinner size='medium' />
-        </Box>
-      )}
-
-      {cartQuery.data && (
-        <>
-          <Table margin={{ bottom: 'medium' }}>
-            <TableHeader>
-              <TableRow>
-                <TableCell scope='col' border='bottom'></TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.name')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.amount')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.renewal')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.delivery')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.total')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'></TableCell>
-              </TableRow>
-            </TableHeader>
-
-            <TableBody>
-              {cartQuery.data?.items.map((item) => {
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell scope='row' size='small'>
-                      <StyledImageWrapper>
-                        <StyledImage src={item.product.images[0]?.file.url} />
-                      </StyledImageWrapper>
-                    </TableCell>
-                    <TableCell>
-                      <strong>{item.product.name}</strong>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{item.options[1].value}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{item.options[0].value}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{item.options[2].value}</Text>
-                    </TableCell>
-                    <TableCell>
-                      <Text>{item.priceTotal}</Text>
-                    </TableCell>
-                    <TableCell></TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </>
-      )}
-      <Box direction='row' margin={{ bottom: 'medium' }}>
-        <Box>
-          <Heading level='3'>{t('confirmation.address')}</Heading>
-          <Text>{cartQuery.data?.billing.name}</Text>
-          <Text>{cartQuery.data?.billing.address1}</Text>
-          <Text>{cartQuery.data?.billing.city}</Text>
-        </Box>
-      </Box>
-
-      <Box width='large'>
-        <Form validate='blur' onSubmit={onSubmit}>
-          <Box direction='row' justify='between' margin={{ top: 'medium' }}>
-            <Button type='submit' label={t('confirmation.submit')} primary />
+        {cartQuery.isLoading && (
+          <Box pad='xlarge' align='center'>
+            <Spinner size='medium' />
           </Box>
-        </Form>
-      </Box>
-    </Main>
+        )}
+
+        {cartQuery.data && (
+          <>
+            <Table margin={{ bottom: 'medium' }}>
+              <TableHeader>
+                <TableRow>
+                  <TableCell scope='col' border='bottom'></TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.name')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.amount')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.renewal')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.delivery')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.total')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'></TableCell>
+                </TableRow>
+              </TableHeader>
+
+              <TableBody>
+                {cartQuery.data?.items.map((item) => {
+                  return (
+                    <TableRow key={item.id}>
+                      <TableCell scope='row' size='small'>
+                        <StyledImageWrapper>
+                          <StyledImage src={item.product.images[0]?.file.url} />
+                        </StyledImageWrapper>
+                      </TableCell>
+                      <TableCell>
+                        <strong>{item.product.name}</strong>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{item.options[1].value}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{item.options[0].value}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{item.options[2].value}</Text>
+                      </TableCell>
+                      <TableCell>
+                        <Text>{item.priceTotal} DKK</Text>
+                      </TableCell>
+                      <TableCell></TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </>
+        )}
+        <Box direction='row' margin={{ bottom: 'medium' }}>
+          <Box>
+            <Heading level='3'>{t('confirmation.address')}</Heading>
+            <Text>{cartQuery.data?.billing.name}</Text>
+            <Text>{cartQuery.data?.billing.address1}</Text>
+            <Text>{cartQuery.data?.billing.city}</Text>
+          </Box>
+        </Box>
+
+        <Box width='large'>
+          <Form validate='blur' onSubmit={onSubmit}>
+            <Box direction='row' justify='between' margin={{ top: 'medium' }}>
+              <Button type='submit' label={t('confirmation.submit')} primary />
+            </Box>
+          </Form>
+        </Box>
+      </Main>
+    </>
   )
 }
 

@@ -16,6 +16,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { NextSeo } from 'next-seo'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import styled from 'styled-components'
 import swell from 'swell-js'
@@ -83,78 +84,83 @@ const MyAccount: React.FC<MyAccountProps> = () => {
     )
 
   return (
-    <Main pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}>
-      <Box align='end'>
-        <Button
-          primary
-          onClick={() => {
-            logoutMutation.mutateAsync()
-          }}
-          label='Logout'
-        />
-      </Box>
+    <>
+      <NextSeo title={t('navigation.myAccount')} />
+      <Main pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}>
+        <Box align='end'>
+          <Button
+            primary
+            onClick={() => {
+              logoutMutation.mutateAsync()
+            }}
+            label='Logout'
+          />
+        </Box>
 
-      {accountQuery.data && ordersQuery.data && (
-        <>
-          <Heading level='2'>{t('account.mySubscriptions')}</Heading>
-          <Table margin={{ bottom: 'xlarge' }}>
-            <TableHeader>
-              <TableRow>
-                <TableCell scope='col' border='bottom'></TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.name')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.amount')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.renewal')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.delivery')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'>
-                  {t('cart.total')}
-                </TableCell>
-                <TableCell scope='col' border='bottom'></TableCell>
-              </TableRow>
-            </TableHeader>
+        {accountQuery.data && ordersQuery.data && (
+          <>
+            <Heading level='2'>{t('account.mySubscriptions')}</Heading>
+            <Table margin={{ bottom: 'xlarge' }}>
+              <TableHeader>
+                <TableRow>
+                  <TableCell scope='col' border='bottom'></TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.name')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.amount')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.renewal')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.delivery')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'>
+                    {t('cart.total')}
+                  </TableCell>
+                  <TableCell scope='col' border='bottom'></TableCell>
+                </TableRow>
+              </TableHeader>
 
-            <TableBody>
-              {ordersQuery.data?.results?.map((result) =>
-                result.items.map((item) => {
-                  return (
-                    <TableRow key={item.id}>
-                      <TableCell scope='row' size='small'>
-                        <StyledImageWrapper>
-                          <StyledImage src={item.product.images[0]?.file.url} />
-                        </StyledImageWrapper>
-                      </TableCell>
-                      <TableCell>
-                        <strong>{item.product.name}</strong>
-                      </TableCell>
-                      <TableCell>
-                        <Text>{item.options[1].value}</Text>
-                      </TableCell>
-                      <TableCell>
-                        <Text>{item.options[0].value}</Text>
-                      </TableCell>
-                      <TableCell>
-                        <Text>{item.options[2].value}</Text>
-                      </TableCell>
-                      <TableCell>
-                        <Text>{item.priceTotal}</Text>
-                      </TableCell>
-                      <TableCell></TableCell>
-                    </TableRow>
-                  )
-                })
-              )}
-            </TableBody>
-          </Table>
-        </>
-      )}
-    </Main>
+              <TableBody>
+                {ordersQuery.data?.results?.map((result) =>
+                  result.items.map((item) => {
+                    return (
+                      <TableRow key={item.id}>
+                        <TableCell scope='row' size='small'>
+                          <StyledImageWrapper>
+                            <StyledImage
+                              src={item.product.images[0]?.file.url}
+                            />
+                          </StyledImageWrapper>
+                        </TableCell>
+                        <TableCell>
+                          <strong>{item.product.name}</strong>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{item.options[1].value}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{item.options[0].value}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{item.options[2].value}</Text>
+                        </TableCell>
+                        <TableCell>
+                          <Text>{item.priceTotal} DKK</Text>
+                        </TableCell>
+                        <TableCell></TableCell>
+                      </TableRow>
+                    )
+                  })
+                )}
+              </TableBody>
+            </Table>
+          </>
+        )}
+      </Main>
+    </>
   )
 }
 

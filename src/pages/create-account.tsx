@@ -12,6 +12,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { NextSeo } from 'next-seo'
 import { useMutation } from 'react-query'
 import swell from 'swell-js'
 
@@ -101,84 +102,87 @@ const CreateAccount: React.FC<CreateAccountProps> = () => {
   }
 
   return (
-    <Main pad={{ horizontal: 'pageMargin', bottom: 'xlarge' }}>
-      <Heading level='2'>{t('createAccount.createAccount')}</Heading>
+    <>
+      <NextSeo title={t('navigation.createAccount')} />
+      <Main pad={{ horizontal: 'pageMargin', bottom: 'xlarge' }}>
+        <Heading level='2'>{t('createAccount.createAccount')}</Heading>
 
-      <Box width='large'>
-        <Form validate='blur' onSubmit={onSubmit}>
-          <Box direction='row' gap='medium' justify='between'>
-            <FormField
-              fill
-              label={t('account.firstName')}
-              name='firstName'
-              required
-            >
-              <TextInput name='firstName' type='text' />
-            </FormField>
-            <FormField
-              fill
-              label={t('account.lastName')}
-              name='lastName'
-              required
-            >
-              <TextInput name='lastName' type='text' />
-            </FormField>
-          </Box>
+        <Box width='large'>
+          <Form validate='blur' onSubmit={onSubmit}>
+            <Box direction='row' gap='medium' justify='between'>
+              <FormField
+                fill
+                label={t('account.firstName')}
+                name='firstName'
+                required
+              >
+                <TextInput name='firstName' type='text' />
+              </FormField>
+              <FormField
+                fill
+                label={t('account.lastName')}
+                name='lastName'
+                required
+              >
+                <TextInput name='lastName' type='text' />
+              </FormField>
+            </Box>
 
-          <FormField label={t('account.address')} name='address' required>
-            <TextInput name='address' type='text' />
-          </FormField>
-
-          <Box direction='row' gap='medium' justify='between'>
-            <FormField label={t('account.country')} name='country'>
-              <Select disabled options={['Denmark']} defaultValue='Denmark' />
+            <FormField label={t('account.address')} name='address' required>
+              <TextInput name='address' type='text' />
             </FormField>
-            <FormField fill label={t('account.city')} name='city' required>
-              <TextInput name='city' type='text' />
-            </FormField>
-            <FormField label={t('account.postcode')} name='postcode' required>
-              <TextInput name='postcode' type='text' />
-            </FormField>
-          </Box>
 
-          <FormField
-            width='medium'
-            label={t('account.phone')}
-            name='phone'
-            required
-          >
-            <TextInput name='phone' type='text' />
-          </FormField>
+            <Box direction='row' gap='medium' justify='between'>
+              <FormField label={t('account.country')} name='country'>
+                <Select disabled options={['Denmark']} defaultValue='Denmark' />
+              </FormField>
+              <FormField fill label={t('account.city')} name='city' required>
+                <TextInput name='city' type='text' />
+              </FormField>
+              <FormField label={t('account.postcode')} name='postcode' required>
+                <TextInput name='postcode' type='text' />
+              </FormField>
+            </Box>
 
-          <Box pad={{ vertical: 'large' }}>
             <FormField
               width='medium'
-              label={t('account.email')}
-              name='email'
+              label={t('account.phone')}
+              name='phone'
               required
             >
-              <TextInput name='email' type='text' />
+              <TextInput name='phone' type='text' />
             </FormField>
-            <FormField
-              width='medium'
-              label={t('account.password')}
-              name='password'
-              required
-            >
-              <TextInput name='password' type='password' />
-            </FormField>
-          </Box>
 
-          <Box direction='row' justify='between' margin={{ top: 'medium' }}>
-            <Button
-              type='submit'
-              label={t('createAccount.createAccount')}
-              primary
-            />
-          </Box>
-        </Form>
-      </Box>
-    </Main>
+            <Box pad={{ vertical: 'large' }}>
+              <FormField
+                width='medium'
+                label={t('account.email')}
+                name='email'
+                required
+              >
+                <TextInput name='email' type='text' />
+              </FormField>
+              <FormField
+                width='medium'
+                label={t('account.password')}
+                name='password'
+                required
+              >
+                <TextInput name='password' type='password' />
+              </FormField>
+            </Box>
+
+            <Box direction='row' justify='between' margin={{ top: 'medium' }}>
+              <Button
+                type='submit'
+                label={t('createAccount.createAccount')}
+                primary
+              />
+            </Box>
+          </Form>
+        </Box>
+      </Main>
+    </>
   )
 }
 

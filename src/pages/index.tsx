@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <NextSeo title='Home' />
+      <NextSeo title={t('navigation.home')} />
       <Main>
         <Box
           pad={{ horizontal: 'pageMargin', vertical: 'xlarge' }}

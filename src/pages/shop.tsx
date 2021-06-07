@@ -19,6 +19,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { NextSeo } from 'next-seo'
 import {
   Dispatch,
   SetStateAction,
@@ -238,81 +239,84 @@ const Shop: React.FC<ShopProps> = () => {
   ]
 
   return (
-    <Box fill='horizontal'>
-      <Nav
-        direction='row'
-        pad={{ horizontal: 'pageMargin', vertical: 'medium' }}
-        border='horizontal'
-        justify={size === 'small' ? 'between' : 'end'}
-        align='center'
-        background='light-2'
-      >
-        {size === 'small' && (
-          <Button
-            plain
-            icon={<Menu />}
-            label={t('shop.categories')}
-            onClick={() => setMenuOpen(true)}
-          />
-        )}
-
-        <Box direction='row' align='center' gap='small'>
-          {size !== 'small' && <Text size='xsmall'>{t('shop.sortBy')}</Text>}
-          <StyledSelect
-            options={filterOptions}
-            onChange={({ value }) => {
-              setSort(value.value)
-            }}
-            defaultValue={filterOptions[0]}
-            valueKey='value'
-            labelKey='label'
-          />
-          <Box>
-            <TextInput
-              onChange={(event) => debouncedSearch(event.target.value)}
-              placeholder={t('shop.search')}
-            />
-          </Box>
-        </Box>
-      </Nav>
-      <Box
-        direction='row'
-        width={{ min: '100%' }}
-        pad={{ horizontal: 'pageMargin' }}
-        justify={size === 'small' ? 'center' : 'between'}
-        gap='medium'
-      >
-        {size !== 'small' ? (
-          <DesktopSidebar
-            categoriesQuery={categoriesQuery}
-            onCategoryChange={onCategoryChange}
-            selectedCategory={category}
-          />
-        ) : (
-          <MobileSidebar
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            categoriesQuery={categoriesQuery}
-            onCategoryChange={onCategoryChange}
-            selectedCategory={category}
-          />
-        )}
-
-        <Main
-          width={size === 'small' ? '100%' : '70%'}
+    <>
+      <NextSeo title={t('navigation.shop')} />
+      <Box fill='horizontal'>
+        <Nav
+          direction='row'
+          pad={{ horizontal: 'pageMargin', vertical: 'medium' }}
+          border='horizontal'
+          justify={size === 'small' ? 'between' : 'end'}
           align='center'
-          justify='start'
-          pad={{ vertical: 'medium' }}
+          background='light-2'
         >
-          {productsQuery.isLoading && <Spinner size='medium' />}
-          <Box fill='horizontal' direction='row' justify='start' wrap>
-            {productsQuery.data?.results.map((product: Product) => (
-              <ProductCard key={product.id} productData={product} />
-            ))}
+          {size === 'small' && (
+            <Button
+              plain
+              icon={<Menu />}
+              label={t('shop.categories')}
+              onClick={() => setMenuOpen(true)}
+            />
+          )}
+
+          <Box direction='row' align='center' gap='small'>
+            {size !== 'small' && <Text size='xsmall'>{t('shop.sortBy')}</Text>}
+            <StyledSelect
+              options={filterOptions}
+              onChange={({ value }) => {
+                setSort(value.value)
+              }}
+              defaultValue={filterOptions[0]}
+              valueKey='value'
+              labelKey='label'
+            />
+            <Box>
+              <TextInput
+                onChange={(event) => debouncedSearch(event.target.value)}
+                placeholder={t('shop.search')}
+              />
+            </Box>
           </Box>
-        </Main>
+        </Nav>
+        <Box
+          direction='row'
+          width={{ min: '100%' }}
+          pad={{ horizontal: 'pageMargin' }}
+          justify={size === 'small' ? 'center' : 'between'}
+          gap='medium'
+        >
+          {size !== 'small' ? (
+            <DesktopSidebar
+              categoriesQuery={categoriesQuery}
+              onCategoryChange={onCategoryChange}
+              selectedCategory={category}
+            />
+          ) : (
+            <MobileSidebar
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              categoriesQuery={categoriesQuery}
+              onCategoryChange={onCategoryChange}
+              selectedCategory={category}
+            />
+          )}
+
+          <Main
+            width={size === 'small' ? '100%' : '70%'}
+            align='center'
+            justify='start'
+            pad={{ vertical: 'medium' }}
+          >
+            {productsQuery.isLoading && <Spinner size='medium' />}
+            <Box fill='horizontal' direction='row' justify='start' wrap>
+              {productsQuery.data?.results.map((product: Product) => (
+                <ProductCard key={product.id} productData={product} />
+              ))}
+            </Box>
+          </Main>
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 

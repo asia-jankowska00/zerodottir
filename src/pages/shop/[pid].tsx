@@ -6,6 +6,7 @@ import {
   Heading,
   Image,
   Layer,
+  Main,
   Paragraph,
   ResponsiveContext,
   Select,
@@ -17,6 +18,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { NextSeo } from 'next-seo'
 import { useContext, useRef, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import styled from 'styled-components'
@@ -34,7 +36,7 @@ const StyledSelect = styled(Select)`
   width: 75px;
 `
 
-const StyledBox = styled(Box)`
+const StyledMain = styled(Main)`
   min-height: 80vh;
 `
 
@@ -138,7 +140,8 @@ const Product: React.FC<ProductProps> = () => {
 
   return (
     <>
-      <StyledBox
+      <NextSeo title={`${productQuery.data?.name} - ${t('navigation.shop')}`} />
+      <StyledMain
         direction={size === 'small' ? 'column' : 'row'}
         pad={{ horizontal: 'pageMargin', bottom: 'large' }}
       >
@@ -268,7 +271,7 @@ const Product: React.FC<ProductProps> = () => {
             </AccordionPanel>
           </Accordion>
         </Box>
-      </StyledBox>
+      </StyledMain>
 
       <Box
         fill='horizontal'
